@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: trader
+      POSTGRES_PASSWORD: traderpass
+      POSTGRES_DB: traderdb
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  api:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://trader:traderpass@postgres:5432/traderdb
+      - REDIS_URL=redis://redis:6379/0
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+
+  news_worker:
+    build: .
+    environment:
+      - DATABASE_URL=postgresql://trader:traderpass@postgres:5432/traderdb
+      - REDIS_URL=redis://redis:6379/0
+      - PYTHONPATH=/code
+    env_file:
+      - .env
+    command: python -m app.run_news_worker
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  pgdata:

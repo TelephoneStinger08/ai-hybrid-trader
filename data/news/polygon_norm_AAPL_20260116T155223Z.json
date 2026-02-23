@@ -1,0 +1,220 @@
+{
+  "ticker": "AAPL",
+  "fetched_utc": "20260116T155223Z",
+  "items": [
+    {
+      "source": "polygon",
+      "id": "248d8112727c27f5cd40f4335d1699ad9a13b752a565716639742d91ebbca991",
+      "ticker": "GOOG",
+      "published_utc": "2026-01-16T13:39:00Z",
+      "title": "Last Year, I Predicted That Alphabet Would Join the $3 Trillion Club. Here's Why the \"Magnificent Seven\" Stock Could Surpass $5 Trillion Before the End of 2027.",
+      "description": "Alphabet has surpassed $4 trillion in market capitalization, exceeding analyst predictions. The company's Gemini 3 AI model, custom TPUs, and diversified portfolio (Google Search, YouTube, Google Cloud) are driving growth. With a P/E ratio of 33.4 and projected 10-15% annual earnings growth, the stock could reach $5 trillion by end of 2027.",
+      "article_url": "https://www.fool.com/investing/2026/01/16/alphabet-stock-all-time-high-5-trillion-club/?source=iedfolrf0000001",
+      "publisher": "The Motley Fool",
+      "author": "Daniel Foelber",
+      "image_url": "https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F850932%2Fperson-biking-on-google-campus-with-google-logo-reflection-in-background_alphabet_google.jpg&w=1200&op=resize",
+      "keywords": [
+        "Alphabet",
+        "market capitalization",
+        "Gemini AI",
+        "Magnificent Seven",
+        "TPU",
+        "Google Search",
+        "YouTube",
+        "Google Cloud",
+        "AI growth",
+        "valuation"
+      ]
+    },
+    {
+      "source": "polygon",
+      "id": "f9f7921bffba215d99c70046b9167ba46ce8b24159b48234775f9c9eeec09cf5",
+      "ticker": "GOOG",
+      "published_utc": "2026-01-16T13:09:00Z",
+      "title": "Alphabet Tops $4 Trillion Valuation as AI Momentum Runs Hot",
+      "description": "Alphabet reached a historic $4 trillion market capitalization, becoming the second-most valuable company behind NVIDIA. The milestone was driven by a landmark partnership with Apple to use Google's Gemini AI for Siri, plus Samsung's commitment to double Gemini-powered devices. Additionally, Alphabet's Wing drone delivery service expanded significantly with Walmart, planning to scale to 150+ additional stores.",
+      "article_url": "https://www.investing.com/analysis/alphabet-tops-4-trillion-valuation-as-ai-momentum-runs-hot-200673379",
+      "publisher": "Investing.com",
+      "author": "Ryan Hasson",
+      "image_url": "https://i-invdn-com.investing.com/redesign/images/seo/investingcom_analysis_og.jpg",
+      "keywords": [
+        "Alphabet",
+        "AI momentum",
+        "market capitalization",
+        "Gemini",
+        "Apple partnership",
+        "drone delivery",
+        "Wing",
+        "Walmart expansion"
+      ]
+    },
+    {
+      "source": "polygon",
+      "id": "4eae17efcf928928eb53c7ee9344e9df4249296b1288558059f3c772b3e55efe",
+      "ticker": "NVDA",
+      "published_utc": "2026-01-16T11:06:00Z",
+      "title": "Billionaire Stanley Druckenmiller of Duquesne Dumped His Fund's Stake in Nvidia and Has Latched Onto a New Favorite Trillion-Dollar AI Stock",
+      "description": "Billionaire investor Stanley Druckenmiller has completely exited Duquesne Family Office's position in Nvidia, citing concerns about AI hype and potential internal competition from customers developing their own GPUs. Instead, he has been aggressively buying Taiwan Semiconductor Manufacturing (TSMC) in four of the last five quarters, viewing it as a more diversified AI play with exposure beyond just GPU manufacturing.",
+      "article_url": "https://www.fool.com/investing/2026/01/16/billionaire-stanley-druckenmiller-dumped-nvidia-ai/?source=iedfolrf0000001",
+      "publisher": "The Motley Fool",
+      "author": "Sean Williams",
+      "image_url": "https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F850884%2Fmoney-manager-stock-chart-reflection-glasses-laptop-buy-sell-getty.jpg&w=1200&op=resize",
+      "keywords": [
+        "artificial intelligence",
+        "GPU manufacturing",
+        "chip fabrication",
+        "portfolio reallocation",
+        "AI bubble risk",
+        "semiconductor industry"
+      ]
+    },
+    {
+      "source": "polygon",
+      "id": "23b54a0f49b5683539f38507f85c6ed60c6b0186ec3c691aa25766d87474758f",
+      "ticker": "AAPL",
+      "published_utc": "2026-01-16T09:06:00Z",
+      "title": "President Donald Trump's Tax Policy Has Lit a Fire Under This Trillion-Dollar Trend That Apple, Alphabet, and Nvidia Are Taking Full Advantage Of",
+      "description": "Trump's Tax Cuts and Jobs Act, which permanently reduced the corporate income tax rate from 35% to 21%, has sparked a trillion-dollar annual share buyback trend among S&P 500 companies. Apple, Alphabet, and Nvidia have been leading this trend, using their increased cash flow to repurchase their own stock rather than hiring or innovating, boosting earnings per share and stock valuations.",
+      "article_url": "https://www.fool.com/investing/2026/01/16/donald-trump-tax-policy-trillion-dollar-trend-nvda/?source=iedfolrf0000001",
+      "publisher": "The Motley Fool",
+      "author": "Sean Williams",
+      "image_url": "https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F850689%2F49178332061_bac99d164c_k.jpg&w=1200&op=resize",
+      "keywords": [
+        "tax policy",
+        "share buybacks",
+        "corporate tax rate",
+        "S&P 500",
+        "earnings per share",
+        "stock repurchases",
+        "trillion-dollar trend"
+      ]
+    },
+    {
+      "source": "polygon",
+      "id": "a0e49849182a33a0428ba23c5c1e08b801f594470dbbac3293390e4ae5c6501e",
+      "ticker": "NVDA",
+      "published_utc": "2026-01-16T00:31:00Z",
+      "title": "CORRECTION -- Adams Diversified Equity Fund Announces 2025 Performance",
+      "description": "Adams Diversified Equity Fund (NYSE: ADX) reported an 18.9% total return on net asset value for 2025, outperforming the S&P 500 Index (17.9%) and its Morningstar U.S. Large Blend peer category (16.2%). The fund paid $1.85 per share in distributions with an 8.1% annual distribution rate on NAV. Net assets grew to $3.03 billion from $2.66 billion year-over-year.",
+      "article_url": "https://www.globenewswire.com/news-release/2026/01/16/3220075/0/en/CORRECTION-Adams-Diversified-Equity-Fund-Announces-2025-Performance.html",
+      "publisher": "GlobeNewswire Inc.",
+      "author": "Na",
+      "image_url": "https://ml.globenewswire.com/Resource/Download/8f6709db-1b50-4636-9450-e38633035b54",
+      "keywords": [
+        "investment returns",
+        "net asset value",
+        "outperformance",
+        "dividend distribution",
+        "equity fund",
+        "2025 performance"
+      ]
+    },
+    {
+      "source": "polygon",
+      "id": "d1245a66f0bef8508082f04ad2246d1a4d2699ec4913f3feb696ed18da98a49d",
+      "ticker": "NFLX",
+      "published_utc": "2026-01-15T19:15:00Z",
+      "title": "Where Will Netflix Be in 5 Years?",
+      "description": "Netflix is projected to grow revenue from $25B (2020) to $45.1B (2025) and $80B (2030), with expanding advertising revenue and subscriber base. The company's operating margins are improving (28% in Q3 2025 vs 20% five years ago), and a potential Warner Bros. Discovery acquisition could boost content and customer base. However, valuation concerns and intense competition from well-funded rivals pose risks.",
+      "article_url": "https://www.fool.com/investing/2026/01/15/where-will-netflix-be-in-5-years/?source=iedfolrf0000001",
+      "publisher": "The Motley Fool",
+      "author": "Neil Patel",
+      "image_url": "https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F850815%2Fbuilding-with-netflix-logo-on-top_netflix.jpg&w=1200&op=resize",
+      "keywords": [
+        "streaming",
+        "revenue growth",
+        "advertising",
+        "subscribers",
+        "operating margins",
+        "content production",
+        "competition",
+        "valuation"
+      ]
+    },
+    {
+      "source": "polygon",
+      "id": "c4443fe9f1532017261dd8f71187c70b6626cd2466018da2d65fba18ecda4175",
+      "ticker": "AMJB",
+      "published_utc": "2026-01-15T18:00:57Z",
+      "title": "JPMorgan Forms New Quant Unit As Electronic Trading Rivalry Intensifies",
+      "description": "JPMorgan Chase has established a new quantitative trading and research group led by Chi Nzelu to strengthen its data-driven and automated trading capabilities amid competition from electronic trading rivals. The bank reported strong Q4 2025 earnings with net income of $13.0 billion and adjusted EPS of $5.23, beating analyst estimates. Asset & Wealth Management revenue rose 13% to a record $6.5 billion with $553 billion in annual net inflows, pushing client assets above $7 trillion.",
+      "article_url": "https://www.benzinga.com/markets/large-cap/26/01/49945737/jpmorgan-forms-new-quant-unit-as-electronic-trading-rivalry-intensifies?utm_source=benzinga_taxonomy&utm_medium=rss_feed_free&utm_content=taxonomy_rss&utm_campaign=channel",
+      "publisher": "Benzinga",
+      "author": "Anusuya Lahiri",
+      "image_url": "https://cdn.benzinga.com/files/images/story/2026/01/15/Hand-Using-A-Pen-To-Interact-With-Digita.jpeg?width=1200&height=800&fit=crop",
+      "keywords": [
+        "quantitative trading",
+        "electronic trading",
+        "earnings",
+        "wealth management",
+        "Apple Card",
+        "net inflows"
+      ]
+    },
+    {
+      "source": "polygon",
+      "id": "89eb010bf2557eb8233b3f02c6977acc7c318fb27d5906456a65cde03c1072f3",
+      "ticker": "IDCC",
+      "published_utc": "2026-01-15T17:06:00Z",
+      "title": "How InterDigital Turns Its Intellectual Property Into Cold, Hard Cash",
+      "description": "InterDigital, an IP licensing specialist, has experienced exceptional growth by licensing its technology to major companies rather than building proprietary products. Revenue more than doubled from 2021 to 2024, net income surged from $55M to $500M, and free cash flow increased nearly sevenfold to $630M. The company has secured lucrative licensing deals with Apple, Amazon, Google, Samsung, and other tech giants, with annualized recurring revenue up nearly 50% since 2021. InterDigital has also returned $1.9B to shareholders through dividends and buybacks.",
+      "article_url": "https://www.fool.com/investing/2026/01/15/how-interdigital-turns-its-intellectual-property-i/?source=iedfolrf0000001",
+      "publisher": "The Motley Fool",
+      "author": "Dan Caplinger",
+      "image_url": "https://g.foolcdn.com/image/?url=https%3A%2F%2Fg.foolcdn.com%2Feditorial%2Fimages%2F851241%2Fnetworks-getty.jpg&w=1200&op=resize",
+      "keywords": [
+        "intellectual property licensing",
+        "recurring revenue",
+        "artificial intelligence",
+        "technology licensing",
+        "financial growth",
+        "shareholder returns"
+      ]
+    },
+    {
+      "source": "polygon",
+      "id": "744222392a35a19ed47360d39161769c8c30241dfafeccca17530052b8e5b00e",
+      "ticker": "MS",
+      "published_utc": "2026-01-15T16:45:00Z",
+      "title": "S&P 500: Intraday Trends and the Return of Sector Rotation",
+      "description": "The S&P 500 is experiencing a shift in market leadership as mega-cap technology stocks become range-bound while other sectors attract capital. Major investment banks expect performance to broaden across financials, industrials, healthcare, and consumer discretionary. This sector rotation creates opportunities for intraday trading as capital flows persistently move between sectors, generating self-reinforcing trends.",
+      "article_url": "https://www.investing.com/analysis/sp-500-intraday-trends-and-the-return-of-sector-rotation-200673297",
+      "publisher": "Investing.com",
+      "author": "Peter B. Levant",
+      "image_url": "https://i-invdn-com.investing.com/redesign/images/seo/investingcom_analysis_og.jpg",
+      "keywords": [
+        "sector rotation",
+        "S&P 500",
+        "market leadership",
+        "technology stocks",
+        "capital flows",
+        "intraday trading",
+        "institutional portfolios",
+        "momentum"
+      ]
+    },
+    {
+      "source": "polygon",
+      "id": "3435cb79481e8258ac21571e8f9afe6994cf949655de934dfebcd8a9d9fcdcc7",
+      "ticker": "TSM",
+      "published_utc": "2026-01-15T16:40:00Z",
+      "title": "TSMC Earnings Reset the AI Narrative After Rotation Fears Hit Tech Stocks",
+      "description": "TSMC reported a 35% jump in Q4 profit to NT$505.74 billion, crushing estimates with revenue hitting NT$1 trillion for the first time. The company guided for 40% Q1 revenue growth and increased capex by 37% to $52-56 billion in 2026, signaling sustained AI demand. The results reversed tech stock losses and validated the AI supply chain narrative, though tariff risks and margin pressures from overseas expansion remain concerns.",
+      "article_url": "https://www.investing.com/analysis/tsmc-earnings-reset-the-ai-narrative-after-rotation-fears-hit-tech-stocks-200673316",
+      "publisher": "Investing.com",
+      "author": "Jaachi Mbachu, Aciarb",
+      "image_url": "https://i-invdn-com.investing.com/redesign/images/seo/investingcom_analysis_og.jpg",
+      "keywords": [
+        "TSMC earnings",
+        "AI demand",
+        "chip manufacturing",
+        "capex guidance",
+        "semiconductor supply chain",
+        "Q4 profit beat",
+        "advanced chips",
+        "Arizona gigafab",
+        "tariff risks"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+from dotenv import load_dotenv
+load_dotenv()
+
+import os, json
+from openai import OpenAI
+
+client = OpenAI(api_key=(os.getenv("OPENAI_API_KEY") or "").strip())
+
+SYSTEM = """You are a strict classifier for automated trading safety.
+Return ONLY valid JSON (no markdown).
+Schema:
+{"trade_allowed": boolean, "confidence": number, "reason": string}
+
+Guidelines:
+- Block trades if news suggests fraud, major litigation, accounting issues, regulatory action, bankruptcy risk, halted trading, or unclear/contradictory info.
+- Allow trades if news is neutral/low-impact or clearly positive/negative but not catastrophic.
+- confidence is 0.0 to 1.0.
+"""
+
+def classify_news(ticker: str, title: str, description: str) -> dict:
+    user = f"Ticker: {ticker}\nTitle: {title}\nDescription: {description}"
+    resp = client.responses.create(
+        model="gpt-4.1-mini",
+        input=[
+            {"role": "system", "content": SYSTEM},
+            {"role": "user", "content": user}
+        ],
+    )
+    text = resp.output_text.strip()
+    return json.loads(text)
+
+if __name__ == "__main__":
+    # quick smoke test
+    demo = classify_news(
+        "AAPL",
+        "Apple shares rise after earnings beat expectations",
+        "Apple reported quarterly earnings that exceeded analyst estimates and raised guidance."
+    )
+    print(demo)
+delete{ app/llm_extract
+
+

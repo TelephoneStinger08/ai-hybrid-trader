@@ -1,0 +1,52 @@
+[
+  {
+    "source": "polygon",
+    "id": "44885b847142f8d5663ff0184f0fe3be91fafea4b7048458f1a0bff3de334833",
+    "ticker": "AVGO",
+    "published_utc": "2026-01-16T15:22:00Z",
+    "title": "Why the Next Phase of the AI Boom Could Favor This Stock",
+    "description": "As AI workloads shift from training to inference (deployment), Broadcom is positioned to benefit significantly. The company's application-specific integrated circuits are purpose-built for inference tasks, offering cost and efficiency advantages over competitors. With a $1.6 trillion market cap and 28% year-over-year revenue growth, Broadcom is well-positioned in a chip market expected to grow at 16.1% annually to reach $1.6 trillion by 2030.",
+    "article_url": "https://www.fool.com/investing/2026/01/16/why-the-next-phase-of-the-ai-boom-could-favor-this/?source=iedfolrf0000001",
+    "publisher": "The Motley Fool"
+  },
+  {
+    "source": "polygon",
+    "id": "7cb346b89ea4cfc272e5d41442de2a04e796f10f287286ff27fd5d758681ff1a",
+    "ticker": "BRK.A",
+    "published_utc": "2026-01-16T15:15:00Z",
+    "title": "Read Warren Buffett's Timeless Investment Advice For Navigating the Stock Market in 2026",
+    "description": "Warren Buffett's 60+ year investment track record demonstrates that maintaining conviction in well-researched investments is key to long-term success. His advice emphasizes concentrated portfolios in best ideas, disciplined stock picking, and consistent investing over time. For those unable to deeply study businesses, index funds are recommended, with the critical caveat of avoiding panic selling during market downturns.",
+    "article_url": "https://www.fool.com/investing/2026/01/16/warren-buffett-investment-advice-stock-market-2026/?source=iedfolrf0000001",
+    "publisher": "The Motley Fool"
+  },
+  {
+    "source": "polygon",
+    "id": "248d8112727c27f5cd40f4335d1699ad9a13b752a565716639742d91ebbca991",
+    "ticker": "GOOG",
+    "published_utc": "2026-01-16T13:39:00Z",
+    "title": "Last Year, I Predicted That Alphabet Would Join the $3 Trillion Club. Here's Why the \"Magnificent Seven\" Stock Could Surpass $5 Trillion Before the End of 2027.",
+    "description": "Alphabet has surpassed $4 trillion in market capitalization, exceeding analyst predictions. The company's Gemini 3 AI model, custom TPUs, and diversified portfolio (Google Search, YouTube, Google Cloud) are driving growth. With a P/E ratio of 33.4 and projected 10-15% annual earnings growth, the stock could reach $5 trillion by end of 2027.",
+    "article_url": "https://www.fool.com/investing/2026/01/16/alphabet-stock-all-time-high-5-trillion-club/?source=iedfolrf0000001",
+    "publisher": "The Motley Fool"
+  },
+  {
+    "source": "polygon",
+    "id": "f9f7921bffba215d99c70046b9167ba46ce8b24159b48234775f9c9eeec09cf5",
+    "ticker": "GOOG",
+    "published_utc": "2026-01-16T13:09:00Z",
+    "title": "Alphabet Tops $4 Trillion Valuation as AI Momentum Runs Hot",
+    "description": "Alphabet reached a historic $4 trillion market capitalization, becoming the second-most valuable company behind NVIDIA. The milestone was driven by a landmark partnership with Apple to use Google's Gemini AI for Siri, plus Samsung's commitment to double Gemini-powered devices. Additionally, Alphabet's Wing drone delivery service expanded significantly with Walmart, planning to scale to 150+ additional stores.",
+    "article_url": "https://www.investing.com/analysis/alphabet-tops-4-trillion-valuation-as-ai-momentum-runs-hot-200673379",
+    "publisher": "Investing.com"
+  },
+  {
+    "source": "polygon",
+    "id": "4eae17efcf928928eb53c7ee9344e9df4249296b1288558059f3c772b3e55efe",
+    "ticker": "NVDA",
+    "published_utc": "2026-01-16T11:06:00Z",
+    "title": "Billionaire Stanley Druckenmiller of Duquesne Dumped His Fund's Stake in Nvidia and Has Latched Onto a New Favorite Trillion-Dollar AI Stock",
+    "description": "Billionaire investor Stanley Druckenmiller has completely exited Duquesne Family Office's position in Nvidia, citing concerns about AI hype and potential internal competition from customers developing their own GPUs. Instead, he has been aggressively buying Taiwan Semiconductor Manufacturing (TSMC) in four of the last five quarters, viewing it as a more diversified AI play with exposure beyond just GPU manufacturing.",
+    "article_url": "https://www.fool.com/investing/2026/01/16/billionaire-stanley-druckenmiller-dumped-nvidia-ai/?source=iedfolrf0000001",
+    "publisher": "The Motley Fool"
+  }
+]
