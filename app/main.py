@@ -6,7 +6,7 @@ from app.broker_alpaca import AlpacaBroker
 from app.utils import now_utc
 import os
 
-app = FastAPI(title="AI Hybrid Trader")
+app = FastAPI(title="AI Hybrid Trader - Short Only")
 
 store = Store()
 risk_engine = RiskEngine()
@@ -39,7 +39,7 @@ def tv_webhook(sig: TVSignal):
         return {"decision": "REJECT", "reason": reason2}
 
     live = os.getenv("LIVE_TRADING", "false").lower() == "true"
-    order = broker.submit_long_only(sig.ticker, sig.action, sig.price, live=live)
+    order = broker.submit_short_only(sig.ticker, sig.action, sig.price, live=live)
 
     store.insert_execution(sig.ticker, order)
     store.update_trade_intent_decision(sig, "EXECUTE", "passed gates")

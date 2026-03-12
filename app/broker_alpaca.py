@@ -13,7 +13,7 @@ class AlpacaBroker:
             "Content-Type": "application/json",
         }
 
-    def submit_long_only(self, ticker: str, action: str, ref_price: float, live: bool):
+    def submit_short_only(self, ticker: str, action: str, ref_price: float, live: bool):
         if not live:
             base = "https://paper-api.alpaca.markets"
         else:
@@ -21,26 +21,30 @@ class AlpacaBroker:
 
         max_notional = float(os.getenv("MAX_ORDER_NOTIONAL_USD", "250"))
         
-        if action == "BUY":
+        if action == "SELL":
+            # Open short position
             payload = {
                 "symbol": ticker,
                 "notional": str(max_notional),
+                "side": "sell",
+                "type": "market",
+                "time_in_force": "day"
+            }
+        elif action == "BUY":
+            # Close short position (buy to cover)
+            pos = requests.get(f"{base}/v2/positions/{ticker}", headers=self._headers(), timeout=10)
+            if pos.status_code != 200:
+                return {"status": "rejected", "error": "no position to cover", "details": pos.text}
+            qty = abs(float(pos.json().get("qty")))  # Get absolute value of short position
+            payload = {
+                "symbol": ticker,
+                "qty": str(qty),
                 "side": "buy",
                 "type": "market",
                 "time_in_force": "day"
             }
         else:
-            pos = requests.get(f"{base}/v2/positions/{ticker}", headers=self._headers(), timeout=10)
-            if pos.status_code != 200:
-                return {"status": "rejected", "error": "no position to sell", "details": pos.text}
-            qty = pos.json().get("qty")
-            payload = {
-                "symbol": ticker,
-                "qty": str(qty),
-                "side": "sell",
-                "type": "market",
-                "time_in_force": "day"
-            }
+            return {"status": "rejected", "error": "invalid action"}
 
         r = requests.post(f"{base}/v2/orders", headers=self._headers(), json=payload, timeout=10)
         return r.json()
