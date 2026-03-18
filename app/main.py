@@ -4,9 +4,15 @@ from app.store import Store
 from app.risk import RiskEngine
 from app.broker_alpaca import AlpacaBroker
 from app.utils import now_utc
+from app.db_init import init_database
 import os
 
 app = FastAPI(title="AI Hybrid Trader - Short Only")
+
+# Initialize database tables on startup
+@app.on_event("startup")
+def startup_event():
+    init_database()
 
 store = Store()
 risk_engine = RiskEngine()
