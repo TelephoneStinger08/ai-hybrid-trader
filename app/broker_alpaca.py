@@ -19,13 +19,17 @@ class AlpacaBroker:
         else:
             base = self.base
 
-        max_notional = float(os.getenv("MAX_ORDER_NOTIONAL_USD", "250"))
+        max_notional = float(os.getenv("MAX_ORDER_NOTIONAL_USD", "500"))
         
         if action == "SELL":
-            # Open short position
+            # Calculate whole shares for short (round down)
+            qty = int(max_notional / ref_price)
+            if qty < 1:
+                qty = 1  # Minimum 1 share
+            
             payload = {
                 "symbol": ticker,
-                "notional": str(max_notional),
+                "qty": str(qty),  # Whole shares only
                 "side": "sell",
                 "type": "market",
                 "time_in_force": "day"
@@ -35,10 +39,10 @@ class AlpacaBroker:
             pos = requests.get(f"{base}/v2/positions/{ticker}", headers=self._headers(), timeout=10)
             if pos.status_code != 200:
                 return {"status": "rejected", "error": "no position to cover", "details": pos.text}
-            qty = abs(float(pos.json().get("qty")))  # Get absolute value of short position
+            qty = abs(float(pos.json().get("qty")))
             payload = {
                 "symbol": ticker,
-                "qty": str(qty),
+                "qty": str(int(qty)),  # Whole shares
                 "side": "buy",
                 "type": "market",
                 "time_in_force": "day"
