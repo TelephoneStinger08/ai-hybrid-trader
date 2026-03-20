@@ -8,7 +8,6 @@ def init_database():
         print("WARNING: DATABASE_URL not set, skipping init")
         return
     
-    # Railway uses postgres://, but psycopg needs postgresql://
     if db_url.startswith("postgres://"):
         db_url = db_url.replace("postgres://", "postgresql://", 1)
     

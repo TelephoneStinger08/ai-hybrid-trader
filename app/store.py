@@ -15,7 +15,7 @@ class Store:
     def insert_trade_intent(self, sig: TVSignal):
         q = """
         insert into trade_intents(ticker, side, tv_price, tv_score, tv_atr, tv_stop, tv_takeprofit, decision, reason)
-        values ($1,$2,$3,$4,$5,$6,$7,'PENDING','')
+        values (%s,%s,%s,%s,%s,%s,%s,'PENDING','')
         """
         with self._conn() as conn:
             c = conn.cursor()
@@ -25,24 +25,24 @@ class Store:
     def update_trade_intent_decision(self, sig: TVSignal, decision: str, reason: str):
         q = """
         update trade_intents
-        set decision=$1, reason=$2
-        where ticker=$3 and side=$4 and ts=(select max(ts) from trade_intents where ticker=$3 and side=$4)
+        set decision=%s, reason=%s
+        where ticker=%s and side=%s and ts=(select max(ts) from trade_intents where ticker=%s and side=%s)
         """
         with self._conn() as conn:
             c = conn.cursor()
-            c.execute(q, (decision, reason, sig.ticker, sig.action))
+            c.execute(q, (decision, reason, sig.ticker, sig.action, sig.ticker, sig.action))
             conn.commit()
 
     def insert_execution(self, ticker: str, order_data: dict):
         import json
-        q = "insert into executions(ticker, order_data) values ($1,$2)"
+        q = "insert into executions(ticker, order_data) values (%s,%s)"
         with self._conn() as conn:
             c = conn.cursor()
             c.execute(q, (ticker, json.dumps(order_data)))
             conn.commit()
 
     def get_latest_news_features(self, ticker: str):
-        q = "select sentiment_score, relevance_score from news_features where ticker=$1 order by extracted_at desc limit 1"
+        q = "select sentiment_score, relevance_score from news_features where ticker=%s order by extracted_at desc limit 1"
         with self._conn() as conn:
             c = conn.cursor()
             c.execute(q, (ticker,))
