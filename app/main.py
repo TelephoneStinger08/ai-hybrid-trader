@@ -1,118 +1,46 @@
-from dotenv import load_dotenv
-load_dotenv(".env")
-
+from fastapi import FastAPI, HTTPException
+from app.schemas import TVSignal
+from app.store import Store
+from app.risk import RiskEngine
+from app.broker_alpaca import AlpacaBroker
+from app.utils import now_utc
+from app.db_init import init_database
 import os
-import traceback
-import requests
-from flask import Flask, request, jsonify
 
-from app.llm_extract import classify_news
-from app.news_ingest import fetch_polygon_news
+app = FastAPI(title="AI Hybrid Trader - Short Only")
 
-app = Flask(__name__)
+@app.on_event("startup")
+def startup_event():
+    init_database()
 
-ALPACA_BASE_URL = (os.getenv("ALPACA_BASE_URL") or "https://paper-api.alpaca.markets").strip()
-ALPACA_API_KEY = (os.getenv("ALPACA_API_KEY") or "").strip()
-ALPACA_SECRET_KEY = (os.getenv("ALPACA_SECRET_KEY") or "").strip()
+store = Store()
+risk_engine = RiskEngine()
+broker = AlpacaBroker()
 
-WEBHOOK_SECRET = (os.getenv("WEBHOOK_SECRET") or "").strip()
-DEFAULT_NEWS_LIMIT = int(os.getenv("NEWS_LIMIT", "3"))
-
-def alpaca_place_order(symbol: str, qty: int, side: str, order_type: str = "market", tif: str = "day"):
-    url = f"{ALPACA_BASE_URL}/v2/orders"
-    headers = {
-        "APCA-API-KEY-ID": ALPACA_API_KEY,
-        "APCA-API-SECRET-KEY": ALPACA_SECRET_KEY,
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "symbol": symbol,
-        "qty": qty,
-        "side": side,
-        "type": order_type,
-        "time_in_force": tif,
-    }
-    r = requests.post(url, json=payload, headers=headers, timeout=20)
-    r.raise_for_status()
-    return r.json()
-
-@app.route("/health", methods=["GET"])
+@app.get("/health")
 def health():
-    return jsonify({"ok": True})
+    return {"ok": True, "ts": now_utc()}
 
-@app.route("/tv-webhook", methods=["POST"])
-@app.route("/tv-webhook", methods=["POST"])
-def tv_webhook():
-    # Parse JSON
-    try:
-        payload = request.get_json(force=True) or {}
-    except Exception:
-        return jsonify({"ok": False, "error": "invalid_json"}), 400
+@app.post("/tv/webhook")
+def tv_webhook(sig: TVSignal):
+    expected = os.getenv("TV_WEBHOOK_SECRET", "changeme")
+    if sig.secret != expected:
+        raise HTTPException(status_code=401, detail="bad secret")
 
-    # Auth: accept either header secret (curl) OR JSON body secret (TradingView)
-    if WEBHOOK_SECRET:
-        header_secret = request.headers.get("X-Webhook-Secret", "")
-        body_secret = (payload.get("secret") or "").strip()
-        if header_secret != WEBHOOK_SECRET and body_secret != WEBHOOK_SECRET:
-            return jsonify({"ok": False, "error": "unauthorized"}), 401
+    if sig.action not in ("BUY", "SELL"):
+        raise HTTPException(status_code=400, detail="bad action")
 
-    # Normalize inputs early (so they exist for BOTH equity and crypto)
-    symbol = (payload.get("symbol") or "").upper().strip()
-    side = (payload.get("side") or "").lower().strip()
+    store.insert_trade_intent(sig)
 
-    # qty safe parse (never crashes)
-    try:
-        qty = int(payload.get("qty") or 1)
-    except Exception:
-        qty = 1
+    ok, reason = risk_engine.pre_trade_checks(sig.ticker, sig.action, sig.price)
+    if not ok:
+        store.update_trade_intent_decision(sig, "REJECT", reason)
+        return {"decision": "REJECT", "reason": reason}
 
-    if not symbol or side not in ("buy", "sell"):
-        return jsonify({"ok": False, "error": "missing_symbol_or_side"}), 400
+    live = os.getenv("LIVE_TRADING", "false").lower() == "true"
+    order = broker.submit_short_only(sig.ticker, sig.action, sig.price, live=live)
 
-    # --- CRYPTO TEST MODE ---
-    crypto_symbol = symbol.endswith("USD") or ("/" in symbol)
-    if crypto_symbol:
-        # normalize common format for Alpaca crypto
-        if symbol in ("BTCUSD", "ETHUSD", "SOLUSD"):
-            symbol = symbol.replace("USD", "/USD")
-        decision = {
-            "trade_allowed": True,
-            "confidence": 0.6,
-            "reason": "Crypto mode: skipping equity news gate."
-        }
-    else:
-        # Pull latest news (Polygon)
-        news_raw = fetch_polygon_news(ticker=symbol, limit=DEFAULT_NEWS_LIMIT)
-        items = news_raw.get("results") or []
-
-        if not items:
-            decision = {"trade_allowed": True, "confidence": 0.5, "reason": "No recent news returned."}
-        else:
-            top = items[0]
-            title = top.get("title") or ""
-            desc = top.get("description") or ""
-            decision = classify_news(symbol, title, desc)
-
-    # Gate trade
-    if not decision.get("trade_allowed", False):
-        return jsonify({
-            "ok": True,
-            "executed": False,
-            "symbol": symbol,
-            "decision": decision,
-            "reason": "Blocked by AI gate"
-        }), 200
-
-    # Place order
-    try:
-        order = alpaca_place_order(symbol=symbol, qty=qty, side=side)
-    except Exception as e:
-        return jsonify({"ok": False, "error": "alpaca_order_failed", "detail": str(e)}), 500
-
-    return jsonify({
-        "ok": True,
-        "executed": True,
-        "symbol": symbol,
-        "decision": decision,
-        "order": order
-    }), 200
+    store.insert_execution(sig.ticker, order)
+    store.update_trade_intent_decision(sig, "EXECUTE", "passed gates")
+    
+    return {"decision": "EXECUTE", "order": order}
