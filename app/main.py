@@ -27,18 +27,19 @@ def tv_webhook(sig: TVSignal):
     if sig.secret != expected:
         raise HTTPException(status_code=401, detail="bad secret")
 
-    if sig.action not in ("BUY", "SELL"):
+    action = sig.action.upper()
+    if action not in ("BUY", "SELL"):
         raise HTTPException(status_code=400, detail="bad action")
 
     store.insert_trade_intent(sig)
 
-    ok, reason = risk_engine.pre_trade_checks(sig.ticker, sig.action, sig.price)
+    ok, reason = risk_engine.pre_trade_checks(sig.ticker, action, sig.price)
     if not ok:
         store.update_trade_intent_decision(sig, "REJECT", reason)
         return {"decision": "REJECT", "reason": reason}
 
     live = os.getenv("LIVE_TRADING", "false").lower() == "true"
-    order = broker.submit_short_only(sig.ticker, sig.action, sig.price, live=live)
+    order = broker.submit_short_only(sig.ticker, action, sig.price, live=live)
 
     store.insert_execution(sig.ticker, order)
     store.update_trade_intent_decision(sig, "EXECUTE", "passed gates")
